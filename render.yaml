@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: deepseek-fastify-api
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/index.js
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "3000"
+      - key: HOST
+        value: "0.0.0.0"
+      - key: AUTO_LAUNCH_UPSTREAM
+        value: "true"
+      - key: DEEP_SEEK_CHAT_AUTHORIZATION
+        sync: false
